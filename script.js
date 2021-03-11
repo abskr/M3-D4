@@ -3,9 +3,20 @@ window.onload = () => {
   .then(response => response.json())
   .then(data => {
     console.log(data)
-    const list = document.getElementById("bookingList")
-    data.forEach(bookings => {
-      list.innerHTML += `<li>${bookings.title} <button class="btn btn-outline-danger btn-sm">skip</button></li>`
+    const books = document.getElementById("bookList")
+    data.forEach(bookData => {
+      books.innerHTML += `<div class="col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+        <div class="card">
+          <img src="${bookData.img}" class="card-img-top" alt="${bookData.title}">
+          <div class="card-body">
+            <h5 class="card-title book-title">${bookData.title}</h5>
+            <p  class="card-text category">${bookData.category}</p>
+            <p  class="card-text price">${bookData.price}</p>
+            <p  class="card-text asin-number">${bookData.asin}</p>
+            <a href="#" class="btn btn-danger">Skip</a>
+          </div>
+        </div>
+      </div>`
       /* const listItem =document.createElement("li")
       const textNode = document.createTextNode(bookings.title)
       listItem.appendChild(textNode)
